@@ -1,0 +1,242 @@
+<?xml version="1.0" ?>
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find arm_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find arm_description)/urdf/arm.trans" />
+<xacro:include filename="$(find arm_description)/urdf/arm.gazebo" />
+<xacro:arg name="transmission_hw_interface" default="hardware_interface/EffortJointInterface"/>
+
+
+<link name="world">
+  
+   </link>
+
+
+<joint name="world_to_base_link" type="fixed">
+     <parent link="world"/>
+     <child link="base_link"/>
+</joint>
+
+
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.0014478516154129634 -0.00016509944390842335 0.0282881699125232" rpy="0 0 0"/>
+    <mass value="0.24259873597275916"/>
+    <inertia ixx="0.000296" iyy="0.000316" izz="0.000468" ixy="-0.0" iyz="-0.0" ixz="-2e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="abs_white"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="waist_1">
+  <inertial>
+    <origin xyz="-0.01198652734822643 4.491314676782147e-05 0.025605754904451675" rpy="0 0 0"/>
+    <mass value="0.16087051684688564"/>
+    <inertia ixx="0.000137" iyy="0.000133" izz="0.000128" ixy="0.0" iyz="-0.0" ixz="2.2e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.001 0.0002 -0.06" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/waist_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque3165255"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.001 0.0002 -0.06" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/waist_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_1_1">
+  <inertial>
+    <origin xyz="0.010989461894290975 3.1599869929879645e-08 0.05920516995044965" rpy="0 0 0"/>
+    <mass value="0.0798611057778876"/>
+    <inertia ixx="0.00014" iyy="0.000134" izz="1.1e-05" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0022 0.0002 -0.10675" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/arm_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque3165255"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0022 0.0002 -0.10675" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/arm_1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_2_1">
+  <inertial>
+    <origin xyz="-0.01708633756900814 0.00010789974053302186 0.031054706394680942" rpy="0 0 0"/>
+    <mass value="0.11409253695444263"/>
+    <inertia ixx="0.000121" iyy="0.000129" izz="2.8e-05" ixy="0.0" iyz="-0.0" ixz="-1.5e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.001 0.0002 -0.22675" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/arm_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque3165255"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.001 0.0002 -0.22675" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/arm_2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm_3_1">
+  <inertial>
+    <origin xyz="0.0030611438970693447 -0.005031856891009146 0.021377337389699103" rpy="0 0 0"/>
+    <mass value="0.02953622640200806"/>
+    <inertia ixx="7e-06" iyy="6e-06" izz="4e-06" ixy="-0.0" iyz="-0.0" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0097 -0.0051 -0.3165" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/arm_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque3165255"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0097 -0.0051 -0.3165" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/arm_3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="grip_finger_left_2">
+  <inertial>
+    <origin xyz="-0.014699973902568358 -0.008314396235535967 0.008945627102874887" rpy="0 0 0"/>
+    <mass value="0.010284278893188307"/>
+    <inertia ixx="3e-06" iyy="3e-06" izz="1e-06" ixy="0.0" iyz="0.0" ixz="-1e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.05095 -0.0326 -0.388581" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/grip_finger_left_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque2321138"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.05095 -0.0326 -0.388581" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/grip_finger_left_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="grip_finger_right_2">
+  <inertial>
+    <origin xyz="-0.013200410179237919 0.0068658167587088426 0.013584088687019158" rpy="0 0 0"/>
+    <mass value="0.008721413951588741"/>
+    <inertia ixx="1e-06" iyy="2e-06" izz="1e-06" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.05095 0.0324 -0.388581" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/grip_finger_right_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque2321138"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.05095 0.0324 -0.388581" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/grip_finger_right_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="flange_adaptor_2">
+  <inertial>
+    <origin xyz="0.03242869105809191 0.004428495488679417 0.025804902005189756" rpy="0 0 0"/>
+    <mass value="0.07479986297837186"/>
+    <inertia ixx="3.2e-05" iyy="3.5e-05" izz="4.4e-05" ixy="-5e-06" iyz="0.0" ixz="-3e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.00565 -0.0001 -0.34645" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/flange_adaptor_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="opaque646464"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.00565 -0.0001 -0.34645" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://arm_description/meshes/flange_adaptor_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="rev_base" type="continuous">
+  <origin xyz="0.001 -0.0002 0.06" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="waist_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <dynamics friction="100" damping="10.0"/> 
+</joint>
+
+<joint name="rev_waist" type="continuous">
+  <origin xyz="-0.0032 0.0 0.04675" rpy="0 0 0"/>
+  <parent link="waist_1"/>
+  <child link="arm_1_1"/>
+  <axis xyz="-1.0 -0.0 0.0"/>
+</joint>
+
+<joint name="rev_elbow" type="continuous">
+  <origin xyz="0.0032 0.0 0.12" rpy="0 0 0"/>
+  <parent link="arm_1_1"/>
+  <child link="arm_2_1"/>
+  <axis xyz="-1.0 -0.0 0.0"/>
+</joint>
+
+<joint name="rev_wrist_arm" type="continuous">
+  <origin xyz="-0.0107 0.0053 0.08975" rpy="0 0 0"/>
+  <parent link="arm_2_1"/>
+  <child link="arm_3_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+</joint>
+
+<joint name="lfinger_slider" type="prismatic">
+  <origin xyz="0.0453 0.0325 0.042131" rpy="0 0 0"/>
+  <parent link="flange_adaptor_2"/>
+  <child link="grip_finger_left_2"/>
+  <axis xyz="0.0 -1.0 -0.0"/>
+  <limit upper="0.0175" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="rfinger_slider" type="prismatic">
+  <origin xyz="0.0453 -0.0325 0.042131" rpy="0 0 0"/>
+  <parent link="flange_adaptor_2"/>
+  <child link="grip_finger_right_2"/>
+  <axis xyz="-0.0 1.0 0.0"/>
+  <limit upper="0.0175" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="rev_effector" type="continuous">
+  <origin xyz="0.01535 -0.005 0.02995" rpy="0 0 0"/>
+  <parent link="arm_3_1"/>
+  <child link="flange_adaptor_2"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+</joint>
+
+</robot>

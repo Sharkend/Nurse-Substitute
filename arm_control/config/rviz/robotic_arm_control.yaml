@@ -1,0 +1,38 @@
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+arm_controller:
+  type: effort_controllers/JointTrajectoryController
+  joints:
+    - rev_base
+    - rev_waist
+    - rev_elbow
+    - rev_wrist_arm
+    - rev_wrist_effector
+
+  constraints:
+    goal_time: 0.5                   # Override default
+    stopped_velocity_tolerance: 0.02 # Override default
+    rev_base:
+      trajectory: 1.0               # Not enforced if unspecified
+      goal: 0.5                     # Not enforced if unspecified
+    rev_waist:
+      trajectory: 1.0               # Not enforced if unspecified
+      goal: 0.5                     # Not enforced if unspecified
+    rev_elbow:
+      trajectory: 1.0               # Not enforced if unspecified
+      goal: 0.5                     # Not enforced if unspecified
+    rev_wrist_arm:
+      trajectory: 1.0               # Not enforced if unspecified
+      goal: 0.5                     # Not enforced if unspecified
+    rev_wrist_effector:
+      trajectory: 1.0               # Not enforced if unspecified
+      goal: 0.5                     # Not enforced if unspecified
+
+  gains:
+    rev_base: {p: 10, i: 1, d: 0.001}
+    rev_waist: {p: 10,  i: 1, d: 0.1}
+    rev_elbow: {p: 10, i: 1, d: 0.001}
+    rev_wrist_arm: {p: 10,  i: 1, d: 0.001}
+    rev_wrist_effector: {p: 10,  i: 1, d: 0.001}

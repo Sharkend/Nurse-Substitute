@@ -1,0 +1,19 @@
+controller_list:
+  - name: fake_arm_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - rev_base
+      - rev_waist
+      - rev_elbow
+      - rev_wrist_arm
+      - rev_effector
+  - name: fake_gripper_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - lfinger_slider
+      - rfinger_slider
+initial:  # Define initial robot poses.
+  - group: arm
+    pose: home
+  - group: gripper
+    pose: open
